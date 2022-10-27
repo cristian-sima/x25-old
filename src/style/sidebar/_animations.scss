@@ -1,0 +1,21 @@
+.sidebar-item-enter {
+  opacity: 0.01;
+  height: 10px;
+}
+
+.sidebar-item-enter.sidebar-item-enter-active {
+  opacity: 1;
+  height: 100%;
+  transition: all 350ms ease;
+}
+
+.sidebar-item-leave {
+  opacity: 0;
+  height: 0;
+}
+
+.sidebar-item-leave.sidebar-item-leave-active {
+  opacity: 0.01;
+  height: 0;
+  transition: all 200ms ease;
+}

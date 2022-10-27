@@ -1,0 +1,37 @@
+$bombay: #b1b2b3;
+$general-font: 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+
+
+%fancy-text {
+	-webkit-user-select: none;
+	box-sizing: border-box;
+	color: $bombay;
+	cursor: default;
+	font-family: $general-font;
+	font-weight: bold;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	opacity: 1;
+	text-align: center;
+}
+
+.text-fancy {
+	@extend %fancy-text;
+  margin-top: 5px;
+  color: gray;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.fancy-text {
+	@extend %fancy-text;
+	font-size: 31px;
+	line-height: 34px;
+}
+
+.fancy-text-sm {
+	@extend %fancy-text;
+	font-size: 16px;
+	line-height: 23.5px;
+}

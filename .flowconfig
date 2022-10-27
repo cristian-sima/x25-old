@@ -1,0 +1,23 @@
+[ignore]
+.*/node_modules/fbjs/.*
+.*/node_modules/config-chain/test/broken.json
+.*/node_modules/npmconf/test/.*
+.*/node_modules/npm/test/.*
+[untyped]
+.*/node_modules/react-select/.*
+[include]
+[libs]
+src/types
+[options]
+emoji=true
+esproposal.class_static_fields=enable
+module.file_ext=.css
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.jsx
+module.file_ext=.scss
+module.ignore_non_literal_requires=true
+suppress_type=$FlowIssue
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_type=$Intl
+module.name_mapper='^src\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
