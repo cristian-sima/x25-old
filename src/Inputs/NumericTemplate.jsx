@@ -64,7 +64,7 @@ export const
 
         input.onChange(valueToStore);
       },
-      handleBlur = () => {
+      handleBlur = (event) => {
         const
           newValue = clearFloatOnBlur(value),
           hasChanged = value !== newValue;
@@ -72,6 +72,7 @@ export const
         if (hasChanged) {
           updateValue(newValue);
         }
+        input.onBlur(event);
       },
 
       handleChange = ({ target: { value : targetValue } }: any) => {
@@ -114,11 +115,9 @@ export const
             value={valueToShow}
           />
           <div className="invalid-feedback">
-            {touched && error && (
-              <span>
-                {error}
-              </span>
-            )}
+            {touched && error ? <span>
+              {error}
+            </span> : null}
           </div>
         </div>
       </div>

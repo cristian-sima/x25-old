@@ -66,11 +66,9 @@ export const InputTemplate = ({
         />
         <div className="invalid-feedback">
           {
-            touched && error && (
-              <span>
-                {error}
-              </span>
-            )
+            touched && error ? <span>
+              {error}
+            </span> : null
           }
         </div>
       </div>

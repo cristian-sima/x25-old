@@ -54,7 +54,7 @@ export const NumericInput = (props : NumericPropTypes) => {
       input.onChange(valueToStore);
     },
 
-    handleBlur = () => {
+    handleBlur = (event) => {
       const
         newValue = clearFloatOnBlur(value),
         hasChanged = value !== newValue;
@@ -62,6 +62,8 @@ export const NumericInput = (props : NumericPropTypes) => {
       if (hasChanged) {
         updateValue(newValue);
       }
+
+      input.onBlur(event);
     },
 
     handleChange = ({ target: { value : targetValue } }: any) => {
@@ -95,9 +97,7 @@ export const NumericInput = (props : NumericPropTypes) => {
 
   if (noCurrency) {
     return (
-      <div className="form-group-inline">
-        {inputComponent}
-      </div>
+      inputComponent
     );
   }
 

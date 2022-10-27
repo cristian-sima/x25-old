@@ -40,11 +40,9 @@ const CustomSelect = (props : SelectMonthPropTypes) => {
         <Simple {...props} />
         <div className="invalid-feedback">
           {
-            touched && error && (
-              <span>
-                {error}
-              </span>
-            )
+            touched && error ? <span>
+              {error}
+            </span> : null
           }
         </div>
       </div>

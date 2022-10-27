@@ -40,7 +40,7 @@ class ModalRoot extends React.Component<ModalRootPropTypes> {
 
         if (typeof Component === "undefined") {
           return (
-            <div>
+            <div key="a">
               {`No MODAL component for the type [${modalType}] in Modal/components.jsx`}
             </div>
           );

@@ -44,11 +44,9 @@ export const TextareaTemplate = (props : InputTemplatePropTypes) => {
         <SimpleTextarea {...props} />
         <div className="invalid-feedback">
           {
-            touched && error && (
-              <span>
-                {error}
-              </span>
-            )
+            touched && error ? <span>
+              {error}
+            </span> : null
           }
         </div>
       </div>

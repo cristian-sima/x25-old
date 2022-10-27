@@ -27,7 +27,7 @@ const CifField = (props : any) => {
               "is-valid"   : isGood,
               "is-invalid" : touched && error,
             })}
-            disabled={submitting && !(submitting && isWaiting)}
+            disabled={submitting ? !(submitting && isWaiting) : null}
             id={name}
             name={name}
             onKeyUp={handleKeyUp}

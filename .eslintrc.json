@@ -1,133 +1,140 @@
 {
-   "env":{
-      "browser":true,
-      "es6":true,
-      "jest":true
+   "env": {
+      "browser": true,
+      "es6": true,
+      "jest": true
    },
-   "parser":"babel-eslint",
-   "extends":[
+   "parser": "babel-eslint",
+   "extends": [
       "eslint:all",
       "plugin:react/all"
    ],
    "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "16.12.0",
-      "flowVersion": "0.112.0"
-    }
-  },
-   "parserOptions":{
-      "ecmaVersion":2018,
-      "ecmaFeatures":{
-         "jsx":true,
-         "modules":true
-      },
-      "sourceType":"module"
+      "react": {
+         "pragma": "React",
+         "version": "16.12.0",
+         "flowVersion": "0.112.0"
+      }
    },
-   "plugins":[
+   "parserOptions": {
+      "ecmaVersion": 2018,
+      "ecmaFeatures": {
+         "jsx": true,
+         "modules": true
+      },
+      "sourceType": "module"
+   },
+   "plugins": [
       "react"
    ],
-   "rules":{
-     "react/require-optimization": 0,
-     "default-param-last": 0,
-     "react/jsx-props-no-spreading": 0,
-     "function-call-argument-newline": ["error", "consistent"],
-
-     "react/no-deprecated": 0,
-     "max-lines-per-function": ["error", { "max": 300 }],
-
+   "rules": {
+      "react/require-optimization": 0,
+      "default-param-last": 0,
+      "react/jsx-props-no-spreading": 0,
+      "function-call-argument-newline": [
+         "error",
+         "consistent"
+      ],
+      "react/static-property-placement": 0,
+      "react/no-deprecated": 0,
+      "max-lines-per-function": [
+         "error",
+         {
+            "max": 300
+         }
+      ],
       "react/jsx-fragments": 0,
       "func-style": 0,
       "react/prefer-exact-props": 0,
       "react/jsx-closing-tag-location": 0,
       "react/state-in-constructor": 0,
-      "react/jsx-handler-names":0,
-      "no-confusing-arrow":0,
-      "max-statements":0,
-      "react/destructuring-assignment":0,
-      "react/no-unused-prop-types":0,
-      "react/require-default-props":0,
-      "react/jsx-sort-default-props":0,
-      "react/jsx-max-depth":0,
-      "prefer-promise-reject-errors":0,
+      "react/jsx-handler-names": 0,
+      "no-confusing-arrow": 0,
+      "max-statements": 0,
+      "react/destructuring-assignment": 0,
+      "react/no-unused-prop-types": 0,
+      "react/require-default-props": 0,
+      "react/jsx-sort-default-props": 0,
+      "react/jsx-max-depth": 0,
+      "prefer-promise-reject-errors": 0,
       "react/no-unused-state": 0,
-      "react/jsx-one-expression-per-line":0,
-      "react/jsx-no-literals":0,
-      "react/jsx-no-bind":0,
-      "react/default-props-match-prop-types":0,
-      "padding-line-between-statements":[
+      "react/jsx-one-expression-per-line": 0,
+      "react/jsx-no-literals": 0,
+      "react/jsx-no-bind": 0,
+      "react/default-props-match-prop-types": 0,
+      "padding-line-between-statements": [
          "error",
          {
-            "blankLine":"always",
-            "prev":[
+            "blankLine": "always",
+            "prev": [
                "const",
                "let",
                "var"
             ],
-            "next":"*"
+            "next": "*"
          },
          {
-            "blankLine":"any",
-            "prev":[
+            "blankLine": "any",
+            "prev": [
                "const",
                "let",
                "var"
             ],
-            "next":[
+            "next": [
                "const",
                "let",
                "var"
             ]
          }
       ],
-      "react/forbid-component-props":0,
-      "react/no-multi-comp":0,
-      "react/no-set-state":0,
-      "react/function-component-definition":0,
-      "react/jsx-closing-bracket-location":0,
-      "react/jsx-max-props-per-line":0,
-      "no-underscore-dangle":0,
-      "react/jsx-newline":0,
-      "react/jsx-sort-props":0,
-      "react/no-unused-class-component-methods":0,
-      "function-paren-newline":0,
-      "no-nested-ternary":0,
-      "max-params":[
+      "react/forbid-component-props": 0,
+      "react/no-multi-comp": 0,
+      "react/no-set-state": 0,
+      "react/function-component-definition": 0,
+      "react/jsx-closing-bracket-location": 0,
+      "react/jsx-max-props-per-line": 0,
+      "no-underscore-dangle": 0,
+      "react/jsx-newline": 0,
+      "react/jsx-sort-props": 0,
+      "react/no-unused-class-component-methods": 0,
+      "function-paren-newline": 0,
+      "no-nested-ternary": 0,
+      "max-params": [
          "error",
          5
       ],
-      "array-element-newline":[
+      "array-element-newline": [
          1,
          "consistent"
-       ],
-      "multiline-comment-style":0,
-      "lines-between-class-members":[
+      ],
+      "multiline-comment-style": 0,
+      "lines-between-class-members": [
          "error",
          "always",
          {
-            "exceptAfterSingleLine":true
+            "exceptAfterSingleLine": true
          }
       ],
-      "react/jsx-indent-props":0,
-      "react/jsx-indent":0,
-      "react/no-array-index-key":0,
-      "react/jsx-curly-brace-presence":[
+      "react/jsx-indent-props": 0,
+      "react/jsx-indent": 0,
+      "react/no-array-index-key": 0,
+      "react/jsx-curly-brace-presence": [
          2,
          {
-            "props":"never",
-            "children":"ignore"
+            "props": "never",
+            "children": "ignore"
          }
       ],
-      "react/sort-comp":[
+      "react/sort-comp": [
          2,
          {
-            "order":[
+            "order": [
                "static-methods",
                "lifecycle",
                "render"
             ],
-            "groups":{
-               "lifecycle":[
+            "groups": {
+               "lifecycle": [
                   "defaultProps",
                   "props",
                   "contextTypes",
@@ -150,10 +157,10 @@
             }
          }
       ],
-      "new-cap":[
+      "new-cap": [
          2,
          {
-            "capIsNewExceptions":[
+            "capIsNewExceptions": [
                "List",
                "Map",
                "OrderedList",
@@ -164,103 +171,103 @@
             ]
          }
       ],
-      "comma-dangle":[
+      "comma-dangle": [
          "error",
          "always-multiline"
       ],
-      "no-extra-parens":[
+      "no-extra-parens": [
          "off"
       ],
-      "no-magic-numbers":[
+      "no-magic-numbers": [
          "error",
          {
-            "ignore":[
+            "ignore": [
                0,
                1,
                2,
                10
             ],
-            "ignoreArrayIndexes":true
+            "ignoreArrayIndexes": true
          }
       ],
-      "strict":[
+      "strict": [
          "error",
          "global"
       ],
-      "max-lines":[
+      "max-lines": [
          2,
          450
       ],
-      "max-len":[
+      "max-len": [
          "error",
          105
       ],
-      "object-curly-spacing":[
+      "object-curly-spacing": [
          "error",
          "always"
       ],
-      "indent":[
+      "indent": [
          "error",
          2,
          {
-            "SwitchCase":1
+            "SwitchCase": 1
          }
       ],
-      "linebreak-style":[
+      "linebreak-style": [
          "error",
          "windows"
       ],
-      "padded-blocks":[
+      "padded-blocks": [
          "off"
       ],
-      "one-var":[
+      "one-var": [
          "off"
       ],
-      "no-ternary":[
+      "no-ternary": [
          "off"
       ],
-      "multiline-ternary":[
+      "multiline-ternary": [
          "off"
       ],
-      "quote-props":[
+      "quote-props": [
          "error",
          "consistent"
       ],
-      "object-curly-newline":[
+      "object-curly-newline": [
          "off"
       ],
-      "quotes":[
+      "quotes": [
          "error",
          "double",
          "avoid-escape"
       ],
-      "semi":[
+      "semi": [
          "error"
       ],
-      "sort-vars":[
+      "sort-vars": [
          "off"
       ],
-      "sort-keys":[
+      "sort-keys": [
          "off"
       ],
-      "sort-imports":[
+      "sort-imports": [
          "off"
       ],
-      "capitalized-comments":[
+      "capitalized-comments": [
          "off"
       ],
-      "arrow-body-style":[
+      "arrow-body-style": [
          "error",
          "as-needed"
       ],
-      "arrow-parens":[
+      "arrow-parens": [
          "error",
          "always"
       ],
-      "class-methods-use-this":[
+      "class-methods-use-this": [
          "error",
          {
-            "exceptMethods":[
+            "exceptMethods": [
                "componentDidMount",
                "componentDidUpdate",
                "componentWillMount",
@@ -272,13 +279,13 @@
             ]
          }
       ],
-      "key-spacing":[
+      "key-spacing": [
          "error",
          {
-            "align":{
-               "beforeColon":true,
-               "afterColon":true,
-               "on":"colon"
+            "align": {
+               "beforeColon": true,
+               "afterColon": true,
+               "on": "colon"
             }
          }
       ]

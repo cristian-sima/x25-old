@@ -42,7 +42,7 @@ import { language } from "../utility";
 const { message : languageMessage, label } = language;
 
 import * as actions from "./actions";
-import * as x25-react16Actions from "../actions";
+import * as react16Actions from "../actions";
 
 const
   mapDispatchToProps = (dispatch : Dispatch) => ({
@@ -50,7 +50,7 @@ const
       dispatch(actions.hideModal());
     },
     showError (errMessage) {
-      dispatch(x25-react16Actions.notifyError(errMessage));
+      dispatch(react16Actions.notifyError(errMessage));
     },
   });
 
