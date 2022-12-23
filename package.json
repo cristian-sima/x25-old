@@ -1,9 +1,9 @@
 {
-  "version": "5.1.27",
+  "version": "5.1.34",
   "name": "x25-react16",
   "description": "x25-react16",
   "scripts": {
-    "load": "npm run intern-pre && cd dist && npm publish --tag=old",
+    "load": "npm run intern-pre && cd dist && npm publish",
     "load-beta": "npm run intern-pre && cd dist && npm publish --tag beta",
     "check": "npm-check -u -i babel-jest -i jest -i history --specials=bin,eslint,babel,webpack",
     "eslint": "eslint --ext .jsx,.js src --fix",
