@@ -50,7 +50,7 @@ const EstimateBox = (props : EstimateBoxProps) => {
               companyID={id}
               current={formValues}
               initialValues={Immutable.Map({
-                Months: 6,
+                Months: 12,
               })}
             />
           </Payment>

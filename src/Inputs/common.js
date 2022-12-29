@@ -1,9 +1,7 @@
 /* eslint-disable require-unicode-regexp */
 
-const
-  floatToLocalComma = (raw) => String(raw).replace(".", ",");
-
 export const
+  floatToLocalComma = (raw) => String(raw).replace(".", ","),
   floatToEnglishComma = (raw) => String(raw).replace(",", "."),
   isFloat = (raw) => {
     const floatRegex = /^-?\d+(?:[.]\d*?)?$/;
