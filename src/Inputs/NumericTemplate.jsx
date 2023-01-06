@@ -1,134 +1,125 @@
-/* eslint-disable require-unicode-regexp */
-/* eslint-disable no-magic-numbers */
-/* eslint-disable react/no-unsafe */
 
 type NumericPropTypes = {
-  +currency?: boolean;
   +optional?: boolean;
   +size?: number;
-  +inputClass?: any;
   +customClass?: any;
   +divClass?: any;
   +input: any;
   +label?: string;
-  +tabIndex?: number;
+  +meta: {
+   error?: string;
+   submitting: boolean;
+   touched: boolean;
+ };
   +placeholder?: string;
-  +left?: string;
-  +right?: string;
   +value?: string;
+  +autoFocus?: boolean;
+  +type: string;
+  +inputClass?: string;
+  +left?: string;
+  +tabIndex?: number;
+  +right?: string;
   +formatValue: (raw: any, optional?: boolean) => string;
-  +normalizeValue: (raw: any) => any;
+  +normalizeValue: (raw: string | null) => any;
   +onBlur?: () => void;
   +onChange?: (event: any) => void;
   +onRegisterRef?: any;
-  +noFormatOnBlur?: bool;
-  +decimals?: number;
-  +meta: {
-    error?: string;
-    submitting: boolean;
-    touched: boolean;
-  };
 };
 
 import React from "react";
 import classnames from "classnames";
+import { formatZeroValue } from "../utility";
 
-import { floatToLocalComma, clearFloatOnBlur, isFloat, floatToEnglishComma,
-} from "./common";
 
-export const NumericInput = (props : NumericPropTypes) => {
-  const
-    {
-      input, label, tabIndex, onRegisterRef,
-      noFormatOnBlur, decimals = 2,
-      size, placeholder, meta: { submitting, touched, error },
-    } = props,
-    rawValue = props.input.value,
-    valueToShow = floatToLocalComma(rawValue, props.optional),
-    updateValue = (valueToStore) => {
-      input.onChange(valueToStore);
-    },
-    handleBlur = (event) => {
+import { getFloatValueToStore, clearFloatOnBlur, isFloat, floatToEnglishComma } from "./common";
 
-      const
-        newRawValue = event.target.value,
-        isFloatValue = isFloat(floatToEnglishComma(newRawValue));
+export const
+  NumericTemplate = (props : NumericPropTypes) => {
+    const
+      {
+        input, right, tabIndex, divClass, label,
+        onRegisterRef,
+        meta: { submitting, touched, error }, formatValue = formatZeroValue,
+        type, autoFocus, inputClass, placeholder, left, size,
+      } = props,
 
-      let
-        newFloatValue = parseFloat(
-          floatToEnglishComma(clearFloatOnBlur(newRawValue)),
-        ).toFixed(decimals);
+      [value, setValue] = React.useState(props.input.value),
 
-      if (!isFloatValue) {
-        newFloatValue = input.value;
-      }
+      valueToShow = formatValue(value, props.optional),
 
-      const
-        oldFloatValue = input.value,
-        hasChanged = oldFloatValue !== newFloatValue;
+      updateValue = (targetValue: any) => {
+        setValue(targetValue);
 
-      if (!hasChanged) {
-        newFloatValue = input.value;
-      }
+        let valueToStore = targetValue;
 
-      if (!noFormatOnBlur) {
-        event.target.value = newFloatValue;
-      }
-
-      input.onBlur(event);
-
-      if (!noFormatOnBlur && hasChanged) {
-        updateValue(floatToEnglishComma(newFloatValue));
-      }
-
-    },
-
-    handleChange = ({ target: { value : targetValue } }: any) => {
-      updateValue(floatToEnglishComma(targetValue));
-    },
-    warningClass = `${touched && error ? " is-invalid" : ""}`,
-    customClass = `${props.inputClass ? ` ${props.inputClass}` : ""}`,
-    classForDiv = `form-group row ${props.divClass ? props.divClass : ""}`,
-    classForInput = `form-control ${warningClass}${customClass}`,
-    inputComponent = (
-      <input
-        aria-label={label}
-        className={classnames(classForInput, {
-          "is-invalid": touched && error,
-        })}
-        disabled={submitting}
-        id={input.name}
-        maxLength={size}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        placeholder={placeholder || label}
-        ref={onRegisterRef}
-        tabIndex={tabIndex}
-        type="text"
-        value={valueToShow}
-      />
-    );
-
-  return (
-    <div className={classnames(classForDiv, {
-      "is-invalid": touched && error,
-    })}>
-      <label
-        className={`${props.left ? props.left : "col-md-4 text-md-right"} form-control-label`}
-        htmlFor={input.name}>
-        {label}
-      </label>
-      <div className={props.right ? props.right : "col-md-8"}>
-        {
-          inputComponent
+        if (isFloat(floatToEnglishComma(targetValue))) {
+          valueToStore = getFloatValueToStore(targetValue);
         }
-        <div className="invalid-feedback">
-          {touched && error ? <span>
-            {error}
-          </span> : null}
+
+        input.onChange(valueToStore);
+      },
+
+      handleBlur = (event: any) => {
+        const
+          newValue = clearFloatOnBlur(value),
+          hasChanged = value !== newValue;
+
+        if (hasChanged) {
+          updateValue(newValue);
+        }
+
+        input.onBlur(event);
+      },
+
+      handleChange = ({ target: { value : targetValue } }: any) => {
+        updateValue(targetValue);
+      },
+      warningClass = `${touched && error ? " is-invalid" : ""}`,
+      customClass = `${inputClass ? ` ${inputClass}` : ""}`,
+      classForInput = `form-control ${warningClass}${customClass}`,
+      classForDiv = `form-group row ${divClass ? divClass : ""}`;
+
+
+    React.useEffect(() => {
+      if (isFloat(input.value) || input.value === "") {
+        updateValue(input.value);
+      }
+    }, [input.value]);
+
+    return (
+      <div className={classnames(classForDiv, {
+        "is-invalid": touched && error,
+      })}>
+        <label
+          className={`${left ? left : "col-md-4 text-md-right"} form-control-label`}
+          htmlFor={input.name}>
+          {label}
+        </label>
+        <div className={right ? right : "col-md-8"}>
+          <input
+            aria-label={label}
+            autoFocus={autoFocus}
+            className={classForInput}
+            disabled={submitting}
+            id={input.name}
+            maxLength={size}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder={placeholder}
+            ref={onRegisterRef}
+            tabIndex={tabIndex}
+            type={type}
+            value={valueToShow}
+          />
+          <div className="invalid-feedback">
+            {touched && error ? (
+              <span>
+                {error}
+              </span>
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
